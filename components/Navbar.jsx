@@ -12,6 +12,19 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 const Navbar = () => {
   const isUserLoggedIn = true
 
+  const [providers, setProviders] = useState(null)
+  const [toggleDropdown, setToggleDropdown] = useState(false)
+
+  // useEffect(() => {
+  //   const setProviders = async () => {
+  //     const response = await getProviders()
+
+  //     setProviders(response)
+  //   }
+
+  //   setProviders()
+  // }, [])
+
   return (
     <nav className="flex justify-between items-center w-full mb-16 px-6 bg-primary">
       <Link 
@@ -51,12 +64,81 @@ const Navbar = () => {
           </div>
         ) : (
           <>
+            {
+              providers && 
+                Object.values(providers).map((provider) => (
+                  <Button
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                   > 
+                    Login
+                  </Button>
+                ))
+            }
           </>
         )}
       </div>
 
+      {/* mobile nav */}
+      <div className="sm:hidden flex relative">
+        {isUserLoggedIn ? (
+          <div className="flex">
+             <Image 
+                src="logo_2.svg"
+                width={37}
+                height={37}
+                className="rounded-full"
+                alt="Profile picture"
+                onClick={() => setToggleDropdown((prev) => !prev)}
+              />
+              {toggleDropdown && (
+                <div className="absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end">
+                  <Link
+                    href='/profile'
+                    className="text-sm text-gray-700 hover:text-gray-500 font-medium;"
+                    onClick={() => setToggleDropdown(false)}
+                  >
+                    Meu Perfil
+                  </Link>
 
-      {/* desktop nav */}
+                  <Link
+                    href='/create-recipe'
+                    className="text-sm text-gray-700 hover:text-gray-500 font-medium;"
+                    onClick={() => setToggleDropdown(false)}
+                  >
+                    Criar Receita
+                  </Link>
+
+                  <Button 
+                    onClick={() => {
+                      setToggleDropdown(false)
+                      signOut()
+                    }}
+                    className='mt-5 w-full'
+                    variant='destructive'
+                  >
+                    Sair
+                  </Button>
+                </div>
+              )}
+          </div>
+        ) : (
+          <>
+            {
+              providers && 
+                Object.values(providers).map((provider) => (
+                  <Button
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                   > 
+                    Login
+                  </Button>
+                ))
+            }
+          </>
+        )}
+
+      </div>
 
 
     </nav>
