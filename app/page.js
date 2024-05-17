@@ -21,6 +21,7 @@ export default function Home() {
           width={420}
           height={420}
           className="organic_border_1 hidden md:flex"
+          alt="homepage chef cozinhando comida saudavel"
         />
       </div>
     </section>
