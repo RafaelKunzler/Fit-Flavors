@@ -26,9 +26,6 @@ const formSchema = z.object({
   authorNotes: z.string().optional(),
 });
 
-
-
-
 const CreateRecipesForm = () => {
 
   const [ingredients, setIngredients] = useState(['']);
@@ -154,7 +151,10 @@ const CreateRecipesForm = () => {
 
         <div className="flex flex-col md:flex-row md:gap-x-4">
           <div className="flex-grow">
-            <FormLabel className="mb-1 text-gray-700 font-medium">Ingredientes:</FormLabel>
+            <div className="flex items-center justify-between">
+              <FormLabel className="mb-1 text-gray-700 font-medium">Ingredientes:</FormLabel>
+              <Button type="button" variant="ghost" onClick={handleAddIngredient} className="mt-2 text-primary text-xs">Adicionar Ingrediente</Button>
+            </div>
             {ingredients.map((ingredient, index) => (
               <FormItem key={index} className="flex flex-col">
                 
@@ -169,16 +169,20 @@ const CreateRecipesForm = () => {
                 
                 {(index === ingredients.length - 1) && (index !== 0) && (
                   <div className="flex items-center mt-2">
-                    <Button type="button" onClick={handleRemoveIngredient} className="mr-2 bg-red-500 text-white p-2 rounded-md hover:bg-red-600">Remover</Button>
+                    <Button type="button" variant="ghost" onClick={handleRemoveIngredient} className="text-red-600 text-xs">Remover</Button>
                   </div>
                 )}
               </FormItem>
             ))}
-            <Button type="button" onClick={handleAddIngredient} className="mt-2 bg-gray-300 text-gray-700 p-2 rounded-md hover:bg-gray-400">Adicionar Ingrediente</Button>
+            
           </div>
 
           <div className="flex-grow">
-            <FormLabel className="mb-1 text-gray-700 font-medium">Modo de Preparo:</FormLabel>
+            <div>
+              <FormLabel className="mb-1 text-gray-700 font-medium">Modo de Preparo:</FormLabel>
+              <Button type="button" variant="ghost" onClick={handleAddCookingStep} className="mt-2 text-primary text-xs">Adicionar Etapa</Button>
+
+            </div>
             {cookingSteps.map((step, index) => (
               <FormItem key={index} className="flex flex-col">
                 <FormControl>
@@ -191,12 +195,11 @@ const CreateRecipesForm = () => {
                 </FormControl>
                 {(index === cookingSteps.length - 1) && (index !== 0) && (
                   <div className="flex items-center mt-2">
-                    <Button type="button" onClick={handleRemoveCookingStep} className="mr-2 bg-red-500 text-white p-2 rounded-md hover:bg-red-600">Remover</Button>
+                    <Button type="button" variant="ghost" onClick={handleRemoveCookingStep} className="text-red-600 text-xs">Remover</Button>
                   </div>
                 )}
               </FormItem>
             ))}
-            <Button type="button" onClick={handleAddCookingStep} className="mt-2 bg-gray-300 text-gray-700 p-2 rounded-md hover:bg-gray-400">Adicionar Passo de Preparo</Button>
           </div>
         </div>
 
