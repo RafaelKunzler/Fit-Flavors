@@ -33,8 +33,9 @@ const Navbar = () => {
       >
         <Image 
           src="/logo.svg"
-          width={100}
-          height={100}          
+          width={65}
+          height={65}  
+          className="p-2"        
         />
       </Link>
 
@@ -43,12 +44,12 @@ const Navbar = () => {
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-recipe">
-              <Button variant="secondary" className='rounded-full'>
+              <Button variant="secondary">
                 Criar Receita
               </Button>
             </Link>
 
-            <Button variant="secondary" onClick={signOut} className='rounded-full border border-white bg-transparent py-1.5 px-5 text-white'>
+            <Button variant="secondary" onClick={signOut} className='border border-white bg-transparent py-1.5 px-5 text-white'>
               Sair
             </Button>
 
