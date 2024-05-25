@@ -12,6 +12,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react"
 
 const formSchema = z.object({
   recipeName: z.string().min(1, 'O nome da receita é obrigatório'),
@@ -28,8 +30,13 @@ const formSchema = z.object({
 
 const CreateRecipesForm = () => {
 
+  const router = useRouter()
+  const { data: session } = useSession()
+
   const [ingredients, setIngredients] = useState(['']);
   const [cookingSteps, setCookingSteps] = useState(['']);
+
+  const [submitting, setSubmitting] = useState(false)
 
   const { toast } = useToast()
 
@@ -108,11 +115,31 @@ const CreateRecipesForm = () => {
         })
         return
       }
-  
       console.log(formData);
-      alert("Formulário enviado com sucesso!");
-    
+      createRecipe(formData)
   };
+
+  const createRecipe = async (data) => {
+    setSubmitting(true)
+
+    try {
+      const res = await fetch('api/recipe/new', {
+        method: 'POST',
+        body: JSON.stringify({
+          recipe: data,
+          userId: session?.user.id
+        })
+      })
+
+      if(res.ok){
+        router.push('/')
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   const onCancel = () => {
     // todo
@@ -178,7 +205,7 @@ const CreateRecipesForm = () => {
           </div>
 
           <div className="flex-grow">
-            <div>
+            <div className="flex items-center justify-between">
               <FormLabel className="mb-1 text-gray-700 font-medium">Modo de Preparo:</FormLabel>
               <Button type="button" variant="ghost" onClick={handleAddCookingStep} className="mt-2 text-primary text-xs">Adicionar Etapa</Button>
 
@@ -203,7 +230,7 @@ const CreateRecipesForm = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row md:gap-x-4">
+        <div className="flex flex-col gap-4 md:flex-row md:gap-x-4">
           <FormField
             control={form.control}
             name="preparationTime"
