@@ -2,6 +2,7 @@ import "./globals.css";
 
 import Provider from "@/components/Provider";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "@/components/ui/toaster";
 
 
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         <Provider>
           <Navbar />
           {children}
+          <Toaster />
         </Provider>
       </body>
     </html>
