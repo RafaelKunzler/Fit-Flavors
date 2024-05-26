@@ -11,6 +11,6 @@ const RecipeSchema = new Schema({
   }
 });
 
-const Recipe = models.recipe || model('Recipe', RecipeSchema)
+const Recipe = models.Recipe || model('Recipe', RecipeSchema)
 
 export default Recipe

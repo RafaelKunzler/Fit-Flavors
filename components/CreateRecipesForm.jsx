@@ -141,7 +141,7 @@ const CreateRecipesForm = () => {
       })
 
       if (res.ok) {
-        router.push('/')
+        router.push('/recipes-feed')
       }
     } catch (error) {
       console.log(error);
@@ -156,14 +156,14 @@ const CreateRecipesForm = () => {
 
   return (
     
-      <div className="mt-9 px-24 bg-primary-foreground">
-        <div className="py-4 bg-gray-100 ">
+      <div className="mt-9 md:px-24 bg-primary-foreground w-screen">
+        <div className="py-4 bg-gray-100 text-center max-w-fit md:max-w-full">
           <h2 className="text-4xl font-bold text-gray-800">Envie sua Receita</h2>
           <p className="text-gray-400 my-3">Compartilhe suas criações culinárias com a comunidade!</p>
         </div>
       
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-white p-8 rounded-lg shadow-md max-w-2xl mx-auto md:w-3/4 lg:w-2/3">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 bg-white p-8 rounded-lg shadow-md md:mx-auto w-screen lg:w-2/3">
           <FormField
             control={form.control}
             name="recipeName"
@@ -192,7 +192,7 @@ const CreateRecipesForm = () => {
             )}
           />
 
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-3 flex-wrap">
             <FormField
               control={form.control}
               name="difficulty"
@@ -201,7 +201,7 @@ const CreateRecipesForm = () => {
                   <FormLabel className="mb-1 text-gray-700 font-medium">Dificuldade:</FormLabel>
                   <FormControl>
                     <Select>
-                      <SelectTrigger className="w-[240px] text-sm text-left text-gray-500 p-2 border border-gray-300 rounded-md bg-gray-100">
+                      <SelectTrigger className="md:w-[240px] text-sm text-left text-gray-500 p-2 border border-gray-300 rounded-md bg-gray-100">
                         <SelectValue placeholder='Escolha uma dificuldade' />
                       </SelectTrigger>
                       <SelectContent>
@@ -216,7 +216,7 @@ const CreateRecipesForm = () => {
               )}
             />
 
-            <div className="flex flex-col justify-between py-2">
+            <div className="flex flex-col justify-between py-2 gap-4">
               <FormField
                 control={form.control}
                 name="vegan"

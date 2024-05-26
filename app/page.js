@@ -37,23 +37,23 @@ export default function Home() {
 
         <div className="flex flex-col md:flex-row py-8 md:mx-24 md:justify-between gap-4">
           <HomeCard
-            title="Explore nossa seleção de categorias populares."
-            desc="Encontre inspiração culinária e compartilhe suas próprias receitas."
+            title="Receitas Recomendadas para Você"
+            desc="Descubra as receitas mais populares e recomendadas pelos nossos usuários."
             cta='Explorar'
             image='/home-card/home-card-1.jpg'
           />
 
           <HomeCard
-            title="Descubra nossas receitas práticas e rápidas para o dia a dia."
+            title="Receitas para o dia a dia"
             desc="Encontre opções deliciosas e fáceis de preparar para qualquer ocasião."
             cta='Ver mais'
-            image='/home-card/home-card-2.png'
+            image='/home-card/home-card-2.jpeg'
           />
 
           <HomeCard
-            title="Encontre receitas para todas as ocasiões e inspire-se na cozinha."
-            desc="Descubra novas ideias culinárias e surpreenda seus convidados."
-            cta='Explorar'
+            title="Receitas Veganas Deliciosas"
+            desc="Descubra pratos veganos que são tão saborosos quanto nutritivos."
+            cta='Ver mais'
             image='/home-card/home-card-3.jpg'
           />
         </div>
