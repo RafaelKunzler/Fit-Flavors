@@ -8,7 +8,7 @@ import RecipeCard from "@/components/RecipeCard"
 
 const RecipeCardList =({ data, handleTagClick }) => {
   return(
-    <div className="mt-16 space-y-6 py-8 sm:columns-3 sm:gap-6 ">
+    <div className="space-y-6 py-8 sm:columns-3 sm:gap-16 ">
       {data.map((recipe) => (
         <RecipeCard 
           key={recipe._id}
@@ -41,7 +41,12 @@ const RecipesFeed = () => {
 
 
   return (
-    <section className="mx-auto w-full md:px-24 px-6 flex justify-center items-center flex-col gap-2">
+    <section className="mx-auto w-full md:px-24 px-6 flex justify-center items-center flex-col gap-2  bg-gray-100">
+      
+        <div className="py-4 text-center max-w-fit md:max-w-full">
+          <h2 className="text-4xl font-bold text-gray-800">Bem vindo a sua Jornada Fitness</h2>
+          <p className="text-gray-400 my-3">Descubra e compartilhe suas receitas favoritas.</p>
+        </div>
       <Form className='relative w-full flex-center'>
         <Input 
           type="text"

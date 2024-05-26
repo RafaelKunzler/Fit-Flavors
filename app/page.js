@@ -9,7 +9,7 @@ import HomeCard from "@/components/HomeCard";
 export default function Home() {
   return (
     <section className="w-full flex-center flex-col mt-12 text-slate-900">
-      <div className="flex justify-between mx-24">
+      <div className="flex justify-between mx-24 items-center">
         <div className="flex flex-col w-full md:w-1/2 gap-6">
           <h1 className="head_text">Sua <span className="text-primary">jornada fitness</span> começa na cozinha.</h1>
           <p className="desc hidden md:flex">
@@ -30,7 +30,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="md:mt-2 mt-9 py-8">
+      <div className="md:mt-14 mt-9 py-8">
         <h1 className="font-extrabold text-xl md:text-2xl text-center py-4 md:py-8">
           Destaque suas receitas favoritas e <br className="hidden md:block" />descubra novas opções deliciosas
         </h1>

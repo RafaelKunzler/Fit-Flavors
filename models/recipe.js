@@ -8,7 +8,16 @@ const RecipeSchema = new Schema({
   recipe: {
     type: Object,
     required: [true, 'Complete a receita.'],
-  }
+  },
+  ratings: [
+    {
+      userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+      rating: Number,
+    }
+  ]
 });
 
 const Recipe = models.Recipe || model('Recipe', RecipeSchema)

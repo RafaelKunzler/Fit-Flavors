@@ -23,9 +23,15 @@ import {
 
 import { Salad, Vegan } from "lucide-react"
 import { Button } from "./ui/button"
+import StarRating from "./StarRating"
+
 
 
 const RecipeCard = ({ recipe, handleTagClick, handleEdit, handleDelete }) => {
+  const { data: session } = useSession()
+  const pathName = usePathname()
+  const router = useRouter()
+
   function truncateString(str, num) {
     if (str.length <= num) {
       return str
@@ -84,12 +90,29 @@ const RecipeCard = ({ recipe, handleTagClick, handleEdit, handleDelete }) => {
           <p className="text-sm text-gray-800">Tempo de Preparo: {recipe.recipe.preparationTime}</p>
           <div className="flex gap-1 mt-3 flex-wrap">
             {recipe.recipe.tags.map((tag) => (
-              <p className="text-xs text-slate-600 cursor-pointer">
+              <p className="text-xs text-cyan-700 cursor-pointer">
                 #{tag}
               </p>
             ))}
           </div>
+
+          <StarRating
+            readOnly={true}
+            id={recipe._id}
+          />
+          {session?.user.id === recipe.creator._id && pathName === '/profile' && (
+            <div className="flex justify-center gap-6 mt-3 border-t border-gray-300 pt-3" >
+              <p className="text-sm text-primary cursor-pointer" onClick={handleEdit}>
+                Editar
+              </p>
+
+              <p className="text-sm text-destructive cursor-pointer" onClick={handleDelete}>
+                Deletar
+              </p>
+            </div>
+          )}
         </CardContent>
+
 
         <Button className='rounded-none'>Ver Receita</Button>
       </Card>
