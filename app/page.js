@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link"
+
 import { Button } from "@/components/ui/button"
 
 import HomeCard from "@/components/HomeCard";
@@ -14,7 +16,9 @@ export default function Home() {
             Transforme sua alimentação e alcance seus objetivos de saúde e bem-estar conosco!
           </p>
           <div className="flex flex-col gap-4 md:justify-between md:flex-row">
-            <Button>Descubra Receitas</Button>
+            <Link href='/recipes-feed'>
+              <Button>Descubra Receitas</Button>
+            </Link>
           </div>
         </div>
         <Image
@@ -40,8 +44,8 @@ export default function Home() {
           />
 
           <HomeCard
-            title="Descubra as adições mais recentes à nossa coleção de receitas."
-            desc="Encontre receitas fresquinhas e experimente sabores novos."
+            title="Descubra nossas receitas práticas e rápidas para o dia a dia."
+            desc="Encontre opções deliciosas e fáceis de preparar para qualquer ocasião."
             cta='Ver mais'
             image='/home-card/home-card-2.png'
           />
