@@ -30,7 +30,21 @@ const MyProfile = () => {
   }
 
   const handleDelete = async (recipe) => {
+    const hasConfirm = confirm("Tem certeza que deseja excluir essa receita?")
 
+    if(hasConfirm){
+      try {
+        await fetch(`/api/recipe/${recipe._id.toString()}`, {
+          method: 'DELETE',
+        })
+
+        const filteredRecipes = recipes.filter((r) => r._id!== recipe._id)
+
+        setRecipes(filteredRecipes)
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   return (
