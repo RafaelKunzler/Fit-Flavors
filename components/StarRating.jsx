@@ -3,10 +3,18 @@
 import { Rating as ReactRating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+import { useSession } from "next-auth/react"
 
 const StarRating = ({ readOnly, id }) => {
+  const { data: session } = useSession()
+
   const [rating, setRating] = useState(0)
+
+  useEffect(() => {
+    
+  }, [rating])
 
   return( 
     <div className='flex flex-1 items-center gap-3 mt-3'>

@@ -47,7 +47,7 @@ const RecipeCard = ({ recipe, handleTagClick, handleEdit, handleDelete }) => {
           <CardTitle className='flex font-bold'>
             {recipe.recipe.recipeName}
 
-            <div className="flex gap-1">
+            <div className="flex gap-1 ">
               {recipe.recipe.vegan ? (
                 <TooltipProvider>
                   <Tooltip>
@@ -114,7 +114,12 @@ const RecipeCard = ({ recipe, handleTagClick, handleEdit, handleDelete }) => {
         </CardContent>
 
 
-        <Button className='rounded-none'>Ver Receita</Button>
+        <Button
+          className='rounded-none'
+          onClick={() => router.push(`/recipe/${recipe._id}`)}
+        >
+          Ver Receita
+        </Button>
       </Card>
     </div>
   )
