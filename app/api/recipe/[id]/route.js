@@ -21,7 +21,7 @@ export const GET = async (req, { params }) => {
 }
 
 export const PATCH = async (req, { params }) => {
-  const { recipe, ratings } = await request.json()
+  const { recipe, ratings } = await req.json()
 
   try {
     await connectToDB()
@@ -42,6 +42,22 @@ export const PATCH = async (req, { params }) => {
 
   } catch (error) {
     return new Response("Failed to update the recipe", {
+      status: 500
+    })
+  }
+}
+
+export const DELETE = async (req, { params }) => {
+  try {
+    await connectToDB()
+
+    await Recipe.findByIdAndDelete(params.id)
+
+    return new Response("Recipe deleted successfully", {
+      status: 200
+    })
+  } catch (error) {
+    return new Response("Failed to delete the recipe", {
       status: 500
     })
   }

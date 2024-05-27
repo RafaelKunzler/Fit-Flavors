@@ -10,6 +10,7 @@ import Profile from '@/components/Profile'
 const MyProfile = () => {
 
   const { data: session } = useSession();
+  const router = useRouter()
 
   const [recipes, setRecipes] = useState([])
 
@@ -24,11 +25,11 @@ const MyProfile = () => {
     if(session?.user.id)fetchRecipes()
   }, [])
 
-  const handleEdit = () => {
-
+  const handleEdit = (recipe) => {
+    router.push(`/update-recipe?id=${recipe._id}`)
   }
 
-  const handleDelete = async () => {
+  const handleDelete = async (recipe) => {
 
   }
 
