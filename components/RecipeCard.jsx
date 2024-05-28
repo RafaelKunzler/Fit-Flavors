@@ -89,7 +89,7 @@ const RecipeCard = ({ recipe, handleTagClick, handleEdit, handleDelete }) => {
 
           <p className="text-sm font-medium text-gray-600">Tempo de Preparo: {recipe.recipe.preparationTime} min</p>
           <div className="flex gap-1 mt-3 flex-wrap">
-            {recipe.recipe.tags.map((tag) => (
+            {recipe?.recipe?.tags?.map((tag) => (
               <p className="text-xs text-cyan-700 cursor-pointer">
                 #{tag}
               </p>

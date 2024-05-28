@@ -27,12 +27,21 @@ export const PATCH = async (req, { params }) => {
     await connectToDB()
 
     const existingRecipe = await Recipe.findById(params.id)
-    if(!recipe) return new Response("Recipe not found", {
+    if(!existingRecipe) return new Response("Recipe not found", {
       status: 404
     })
 
+    if (ratings) {
+      const existingRatingIndex = existingRecipe.ratings.findIndex(rating => rating.userId.toString() === ratings.userId)
+      if (existingRatingIndex !== -1) {
+        existingRecipe.ratings[existingRatingIndex].rating = ratings.rating
+      } else {
+        existingRecipe.ratings.push(ratings)
+      }
+    }
+
     existingRecipe.recipe = recipe
-    existingRecipe.ratings = ratings
+    
 
     await existingRecipe.save()
 

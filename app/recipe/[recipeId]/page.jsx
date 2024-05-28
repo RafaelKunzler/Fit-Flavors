@@ -69,7 +69,7 @@ const RecipeId = () => {
               }
             </div>
             <StarRating 
-              id={params.recipeId}
+              id={recipe._id}
               readOnly={false}
             />
 
