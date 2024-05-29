@@ -245,7 +245,7 @@ export default function Home() {
           <h2 className="font-extrabold text-2xl md:text-5xl text-center py-4">Depoimentos de Clientes</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-7">
             {testimonials.map(testimonial => (
-              <div key={testimonial.id} className="bg-white p-6 rounded-lg shadow-md">
+              <div key={testimonial.id} className="flex flex-col justify-between bg-white p-6 rounded-lg shadow-md">
                 <p className="text-gray-700 mb-4">{testimonial.text}</p>
                 <div className="flex justify-between items-center">
                   <Avatar>
