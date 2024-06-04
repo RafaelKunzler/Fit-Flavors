@@ -26,6 +26,7 @@ const RecipesFeed = () => {
 
   const handleSearchChange = (e) => {
     e.preventDefault()
+    setSearchRecipe(e.target.value)
   }
 
   useEffect(() => {
@@ -33,11 +34,20 @@ const RecipesFeed = () => {
       const res = await fetch('/api/recipe')
       const data = await res.json()
 
+      if(searchRecipe) {
+        const filteredRecipes = data.filter((recipe) => (
+          recipe.recipe.recipeName.toLowerCase().includes(searchRecipe.toLowerCase())
+        ))
+
+        setRecipes(filteredRecipes)
+        return
+      }
+
       setRecipes(data)
     }
 
     fetchRecipes()
-  }, [])
+  }, [searchRecipe])
 
 
   return (
