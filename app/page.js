@@ -252,7 +252,7 @@ export default function Home() {
                     <AvatarImage src={testimonial.avatar} />
                     <AvatarFallback>{testimonial.fallback}</AvatarFallback>
                   </Avatar>
-                  <p className="text-gray-600 font-semibold">{testimonial.name}</p>
+                  <p className="text-primary font-semibold">{testimonial.name}</p>
                 </div>
               </div>
             ))}

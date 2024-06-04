@@ -19,6 +19,7 @@ import {
 
 import { useState, useEffect } from "react"
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import { LoaderCircle } from "lucide-react"
 
 const Navbar = () => {
   const { data: session } = useSession()
@@ -117,7 +118,7 @@ const Navbar = () => {
         ) : (
           <>
             {
-              providers &&
+              providers ? (
               Object.values(providers).map((provider) => (
                 <Button
                   key={provider.name}
@@ -126,7 +127,11 @@ const Navbar = () => {
                 >
                   Entrar
                 </Button>
-              ))
+              ))) : (
+                <LoaderCircle 
+                  className="text-white spin"
+                />
+              )
             }
           </>
         )}
@@ -186,15 +191,20 @@ const Navbar = () => {
         ) : (
           <>
             {
-              providers &&
+              providers ? (
               Object.values(providers).map((provider) => (
                 <Button
                   key={provider.name}
                   onClick={() => signIn(provider.id)}
+                  variant='secondary'
                 >
                   Entrar
                 </Button>
-              ))
+              ))) : (
+                <LoaderCircle 
+                  className="text-white spin"
+                />
+              )
             }
           </>
         )}
