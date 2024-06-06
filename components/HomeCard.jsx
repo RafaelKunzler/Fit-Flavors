@@ -1,8 +1,9 @@
 import Image from "next/image"
 import { Button } from "./ui/button"
 import { ChevronRight } from "lucide-react"
+import Link from "next/link"
 
-const HomeCard = ({ title, desc, cta, image }) => {
+const HomeCard = ({ title, desc, cta, image, link }) => {
   return (
     <div className="flex flex-col items-center">
   <Image
@@ -17,7 +18,9 @@ const HomeCard = ({ title, desc, cta, image }) => {
       <h2 className="font-bold text-lg text-gray-800">{title}</h2>
       <p className="font-light text-gray-600 text-sm">{desc}</p>
     </div>
-    <Button variant="ghost" className="flex gap-2 items-center text-primary text-xs">{cta} <ChevronRight className="w-4" /></Button>
+    <Link href={`${link}`}>
+      <Button variant="ghost" className="flex gap-2 items-center text-primary text-xs">{cta} <ChevronRight className="w-4" /></Button>
+    </Link>
   </div>
 </div>
 

@@ -1,17 +1,18 @@
 'use client'
 
 import { useState, useEffect } from "react"
+import { useSearchParams } from 'next/navigation'
 
 import { Form } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import RecipeCard from "@/components/RecipeCard"
 import { Checkbox } from "@/components/ui/checkbox"
 
-const RecipeCardList =({ data, handleTagClick }) => {
-  return(
+const RecipeCardList = ({ data, handleTagClick }) => {
+  return (
     <div className="space-y-6 py-8 sm:columns-3 sm:gap-16 ">
       {data.map((recipe) => (
-        <RecipeCard 
+        <RecipeCard
           key={recipe._id}
           recipe={recipe}
           handleTagClick={handleTagClick}
@@ -27,6 +28,8 @@ const RecipesFeed = () => {
 
   const [isVegetarian, setIsVegetarian] = useState(false)
   const [isVegan, setIsVegan] = useState(false)
+
+  const searchParams = useSearchParams()
 
   const handleSearchChange = (e) => {
     e.preventDefault()
@@ -45,8 +48,10 @@ const RecipesFeed = () => {
           recipe.recipe.recipeName.toLowerCase().includes(searchRecipe.toLowerCase())
         )
       }
-      
+
       if (isVegan) {
+        filteredRecipes = filteredRecipes.filter((recipe) => recipe.recipe.vegan)
+      } else if (searchParams.get('vegan') === 'true') {
         filteredRecipes = filteredRecipes.filter((recipe) => recipe.recipe.vegan)
       }
 
@@ -58,18 +63,18 @@ const RecipesFeed = () => {
     }
 
     fetchRecipes()
-  }, [searchRecipe, isVegetarian, isVegan])
+  }, [searchRecipe, isVegetarian, isVegan, searchParams])
 
 
   return (
     <section className="mx-auto w-full md:px-24 px-6 flex justify-center items-center flex-col gap-2  bg-gray-100">
-      
-        <div className="py-4 text-center max-w-fit md:max-w-full">
-          <h2 className="text-4xl font-bold text-gray-800">Bem vindo a sua Jornada Fitness</h2>
-          <p className="text-gray-400 my-3">Descubra e compartilhe suas receitas favoritas.</p>
-        </div>
+
+      <div className="py-4 text-center max-w-fit md:max-w-full">
+        <h2 className="text-4xl font-bold text-gray-800">Bem vindo a sua Jornada Fitness</h2>
+        <p className="text-gray-400 my-3">Descubra e compartilhe suas receitas favoritas.</p>
+      </div>
       <Form className='relative w-full flex-center'>
-        <Input 
+        <Input
           type="text"
           placeholder='Pesquise por receitas'
           onChange={handleSearchChange}
@@ -78,24 +83,24 @@ const RecipesFeed = () => {
         />
         <div className="flex w-full gap-6">
           <div className="flex gap-1 items-center">
-            <Checkbox 
-              id='vegetarian' 
-              onCheckedChange={() => setIsVegetarian(prevIsVegetarian => !prevIsVegetarian)}              
+            <Checkbox
+              id='vegetarian'
+              onCheckedChange={() => setIsVegetarian(prevIsVegetarian => !prevIsVegetarian)}
             />
-            <label 
+            <label
               htmlFor='vegetarian'
-              className="text-sm text-muted-foreground"              
+              className="text-sm text-muted-foreground"
             >
               Vegetariana
             </label>
           </div>
 
           <div className="flex gap-1 items-center">
-            <Checkbox 
-              id='vegan' 
-              onCheckedChange={() => setIsVegan(prevIsVegan => !prevIsVegan)}   
+            <Checkbox
+              id='vegan'
+              onCheckedChange={() => setIsVegan(prevIsVegan => !prevIsVegan)}
             />
-            <label 
+            <label
               htmlFor='vegan'
               className="text-sm text-muted-foreground"
             >
@@ -104,9 +109,9 @@ const RecipesFeed = () => {
           </div>
         </div>
       </Form>
-      <RecipeCardList 
+      <RecipeCardList
         data={recipes}
-        handleTagClick={() => {}}
+        handleTagClick={() => { }}
       />
     </section>
   )

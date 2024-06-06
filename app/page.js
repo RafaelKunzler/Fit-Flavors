@@ -124,6 +124,7 @@ export default function Home() {
             desc="Descubra as receitas mais populares e recomendadas pelos nossos usuários."
             cta='Explorar'
             image='/home-card/home-card-1.jpg'
+            link='/'
           />
 
           <HomeCard
@@ -131,6 +132,7 @@ export default function Home() {
             desc="Encontre opções deliciosas e fáceis de preparar para qualquer ocasião."
             cta='Ver mais'
             image='/home-card/home-card-2.jpeg'
+            link='/'
           />
 
           <HomeCard
@@ -138,6 +140,7 @@ export default function Home() {
             desc="Descubra pratos veganos que são tão saborosos quanto nutritivos."
             cta='Ver mais'
             image='/home-card/home-card-3.jpg'
+            link='/recipes-feed?vegan=true'
           />
         </div>
       </div>
