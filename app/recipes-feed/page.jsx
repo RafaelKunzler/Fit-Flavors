@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { Form } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import RecipeCard from "@/components/RecipeCard"
+import { Checkbox } from "@/components/ui/checkbox"
 
 const RecipeCardList =({ data, handleTagClick }) => {
   return(
@@ -24,6 +25,9 @@ const RecipesFeed = () => {
   const [searchRecipe, setSearchRecipe] = useState('')
   const [recipes, setRecipes] = useState([])
 
+  const [isVegetarian, setIsVegetarian] = useState(false)
+  const [isVegan, setIsVegan] = useState(false)
+
   const handleSearchChange = (e) => {
     e.preventDefault()
     setSearchRecipe(e.target.value)
@@ -34,20 +38,27 @@ const RecipesFeed = () => {
       const res = await fetch('/api/recipe')
       const data = await res.json()
 
-      if(searchRecipe) {
-        const filteredRecipes = data.filter((recipe) => (
-          recipe.recipe.recipeName.toLowerCase().includes(searchRecipe.toLowerCase())
-        ))
+      let filteredRecipes = data
 
-        setRecipes(filteredRecipes)
-        return
+      if (searchRecipe) {
+        filteredRecipes = filteredRecipes.filter((recipe) =>
+          recipe.recipe.recipeName.toLowerCase().includes(searchRecipe.toLowerCase())
+        )
+      }
+      
+      if (isVegan) {
+        filteredRecipes = filteredRecipes.filter((recipe) => recipe.recipe.vegan)
       }
 
-      setRecipes(data)
+      if (isVegetarian) {
+        filteredRecipes = filteredRecipes.filter((recipe) => recipe.recipe.vegetarian)
+      }
+
+      setRecipes(filteredRecipes)
     }
 
     fetchRecipes()
-  }, [searchRecipe])
+  }, [searchRecipe, isVegetarian, isVegan])
 
 
   return (
@@ -65,6 +76,33 @@ const RecipesFeed = () => {
           required
           className=''
         />
+        <div className="flex w-full gap-6">
+          <div className="flex gap-1 items-center">
+            <Checkbox 
+              id='vegetarian' 
+              onCheckedChange={() => setIsVegetarian(prevIsVegetarian => !prevIsVegetarian)}              
+            />
+            <label 
+              htmlFor='vegetarian'
+              className="text-sm text-muted-foreground"              
+            >
+              Vegetariana
+            </label>
+          </div>
+
+          <div className="flex gap-1 items-center">
+            <Checkbox 
+              id='vegan' 
+              onCheckedChange={() => setIsVegan(prevIsVegan => !prevIsVegan)}   
+            />
+            <label 
+              htmlFor='vegan'
+              className="text-sm text-muted-foreground"
+            >
+              Vegana
+            </label>
+          </div>
+        </div>
       </Form>
       <RecipeCardList 
         data={recipes}
