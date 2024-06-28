@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect } from "react"
-import { useSearchParams } from 'next/navigation'
+import { useState, useEffect, Suspense } from "react"
+import { useSearchParams } from "next/navigation"
 
 import { Form } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
@@ -67,53 +67,55 @@ const RecipesFeed = () => {
 
 
   return (
-    <section className="mx-auto w-full md:px-24 px-6 flex justify-center items-center flex-col gap-2  bg-gray-100">
-
-      <div className="py-4 text-center max-w-fit md:max-w-full">
-        <h2 className="text-4xl font-bold text-gray-800">Bem vindo a sua Jornada Fitness</h2>
-        <p className="text-gray-400 my-3">Descubra e compartilhe suas receitas favoritas.</p>
-      </div>
-      <Form className='relative w-full flex-center'>
-        <Input
-          type="text"
-          placeholder='Pesquise por receitas'
-          onChange={handleSearchChange}
-          required
-          className=''
-        />
-        <div className="flex w-full gap-6">
-          <div className="flex gap-1 items-center">
-            <Checkbox
-              id='vegetarian'
-              onCheckedChange={() => setIsVegetarian(prevIsVegetarian => !prevIsVegetarian)}
-            />
-            <label
-              htmlFor='vegetarian'
-              className="text-sm text-muted-foreground"
-            >
-              Vegetariana
-            </label>
-          </div>
-
-          <div className="flex gap-1 items-center">
-            <Checkbox
-              id='vegan'
-              onCheckedChange={() => setIsVegan(prevIsVegan => !prevIsVegan)}
-            />
-            <label
-              htmlFor='vegan'
-              className="text-sm text-muted-foreground"
-            >
-              Vegana
-            </label>
-          </div>
+    <Suspense>
+      <section className="mx-auto w-full md:px-24 px-6 flex justify-center items-center flex-col gap-2  bg-gray-100">
+        <div className="py-4 text-center max-w-fit md:max-w-full">
+          <h2 className="text-4xl font-bold text-gray-800">Bem vindo a sua Jornada Fitness</h2>
+          <p className="text-gray-400 my-3">Descubra e compartilhe suas receitas favoritas.</p>
         </div>
-      </Form>
-      <RecipeCardList
-        data={recipes}
-        handleTagClick={() => { }}
-      />
-    </section>
+
+        <Form className='relative w-full flex-center'>
+          <Input
+            type="text"
+            placeholder='Pesquise por receitas'
+            onChange={handleSearchChange}
+            required
+            className=''
+          />
+          <div className="flex w-full gap-6">
+            <div className="flex gap-1 items-center">
+              <Checkbox
+                id='vegetarian'
+                onCheckedChange={() => setIsVegetarian(prevIsVegetarian => !prevIsVegetarian)}
+              />
+              <label
+                htmlFor='vegetarian'
+                className="text-sm text-muted-foreground"
+              >
+                Vegetariana
+              </label>
+            </div>
+
+            <div className="flex gap-1 items-center">
+              <Checkbox
+                id='vegan'
+                onCheckedChange={() => setIsVegan(prevIsVegan => !prevIsVegan)}
+              />
+              <label
+                htmlFor='vegan'
+                className="text-sm text-muted-foreground"
+              >
+                Vegana
+              </label>
+            </div>
+          </div>
+        </Form>
+        <RecipeCardList
+          data={recipes}
+          handleTagClick={() => { }}
+        />
+      </section>
+    </Suspense>
   )
 }
 
