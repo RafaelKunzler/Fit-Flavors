@@ -61,9 +61,6 @@ const Navbar = () => {
             <NavigationMenu >
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-primary-foreground hover:text-secondary-foreground">
-                    Item One
-                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                       Link

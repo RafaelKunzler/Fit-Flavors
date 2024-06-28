@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 const RecipeCardList = ({ data, handleTagClick }) => {
   return (
-    <div className="space-y-6 py-8 sm:columns-3 sm:gap-16 ">
+    <div className="space-y-6 py-8 sm:columns-3 sm:gap-6 ">
       {data.map((recipe) => (
         <RecipeCard
           key={recipe._id}
