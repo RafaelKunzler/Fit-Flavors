@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { connectToDB } from "@/utils/database"
 import Recipe from "@/models/recipe"
 
