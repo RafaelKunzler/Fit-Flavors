@@ -38,7 +38,9 @@ const RecipesFeed = () => {
 
   useEffect(() => {
     const fetchRecipes = async () => {
-      const res = await fetch('/api/recipe')
+      const res = await fetch('/api/recipe', {
+        cache: 'no-store',
+      })
       const data = await res.json()
 
       let filteredRecipes = data
