@@ -41,7 +41,7 @@ export default function Home() {
     {
       id: 1,
       name: 'Ana Silva',
-      text: 'Encontrei diversas receitas incríveis neste site. Estou adorando compartilhar e experimentar novos pratos!',
+      text: 'Não é sobre seguir regra, é sobre cozinhar e aproveitar o momento.',
       avatar: 'https://i.pravatar.cc/150?img=5',
       fallback: 'AS'
     },
@@ -55,7 +55,7 @@ export default function Home() {
     {
       id: 3,
       name: 'Mariana Oliveira',
-      text: 'Fiquei impressionada com a rapidez na entrega e o profissionalismo da equipe. Parabéns!',
+      text: 'As receitas são simples, mas têm alma. Dá vontade de fazer sem pressa.',
       avatar: 'https://i.pravatar.cc/150?img=49',
       fallback: 'MO'
     },
@@ -77,9 +77,9 @@ export default function Home() {
       {/* Hero */}
       <div className="flex justify-between mx-24 items-center">
         <div className="flex flex-col w-full md:w-1/2 gap-6">
-          <h1 className="head_text">Sua <span className="text-primary">jornada fitness</span> começa na cozinha.</h1>
+          <h1 className="head_text">Toda <span className="text-primary">boa história</span> começa na cozinha.</h1>
           <p className="desc hidden md:flex">
-            Transforme sua alimentação e alcance seus objetivos de saúde e bem-estar conosco!
+            Esse é um espaço de receitas simples, lembranças, cheiros e sabores que fazem a gente se sentir em casa.
           </p>
           <div className="flex flex-col gap-4 md:justify-between md:flex-row">
 
@@ -104,7 +104,7 @@ export default function Home() {
           </div>
         </div>
         <Image
-          src='/cooking-chef.png'
+          src='/cooking-grandma.png'
           width={420}
           height={420}
           className="organic_border_1 hidden md:flex"
@@ -115,7 +115,7 @@ export default function Home() {
       {/* Cards */}
       <div className="md:mt-14 mt-9 py-8">
         <h1 className="font-extrabold text-2xl md:text-5xl text-center mx-6 py-4 md:py-8 md:mb-6">
-          Destaque suas receitas favoritas e <br className="hidden md:block" />descubra novas opções deliciosas
+          Receitas que a gente faz, refaz <br className="hidden md:block" />e acaba decorando de tanto gostar.
         </h1>
 
         <div className="flex flex-col md:flex-row py-8 md:mx-24 md:justify-between gap-4">
@@ -149,10 +149,11 @@ export default function Home() {
       {/* Blog */}
       <div className=" flex flex-col items-center md:my-12 px-6 md:mx-28">
         <h2 className="font-extrabold text-2xl md:text-5xl text-center py-4">
-          Últimas do Blog
+          Entre uma receita e outra
         </h2>
         <p className="text-center text-muted-foreground mb-24">
-          Mantenha-se atualizado com dicas de culinária, tendências alimentares e histórias inspiradoras de nossa comunidade.
+          Anotações sobre comida, memórias e tudo o que acontece
+          em volta do fogão.
         </p>
 
         <div className="w-full">
@@ -165,8 +166,8 @@ export default function Home() {
             <CarouselContent>
               <CarouselItem>
                 <BlogHighlight
-                  title="Dicas para uma alimentação saudável"
-                  desc="Descubra como manter uma dieta equilibrada com nossas dicas práticas."
+                  title="Pequenas dicas que facilitam a vida na cozinha"
+                  desc="Coisas simples que a gente aprende fazendo, errando e acertando entre uma receita e outra."
                   linkText="Leia mais"
                   linkUrl="/blog/healthy-eating"
                   image='/home-card/home-card-1.jpg'
@@ -174,8 +175,8 @@ export default function Home() {
               </CarouselItem>
               <CarouselItem>
                 <BlogHighlight
-                  title="Tendências alimentares de 2024"
-                  desc="Fique por dentro das últimas tendências culinárias que estão dominando o ano."
+                  title="O que anda aparecendo mais na cozinha"
+                  desc="Ingredientes, receitas e costumes que estão ganhando espaço no dia a dia."
                   linkText="Leia mais"
                   linkUrl="/blog/food-trends"
                   image='/home-card/home-card-1.jpg'
