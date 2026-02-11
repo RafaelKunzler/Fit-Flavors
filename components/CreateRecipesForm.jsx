@@ -303,7 +303,6 @@ const CreateRecipesForm = ({ recipe, recipeId, type }) => {
           <div className="flex-grow">
             <div className="flex items-center justify-between">
               <FormLabel className="mb-1 text-gray-700 font-medium">Ingredientes:</FormLabel>
-              <Button type="button" variant="ghost" onClick={handleAddIngredient} className="mt-2 text-primary text-xs">Adicionar Ingrediente</Button>
             </div>
             {ingredients && ingredients.map((ingredient, index) => (
               <FormItem key={index} className="flex flex-col">
@@ -313,24 +312,27 @@ const CreateRecipesForm = ({ recipe, recipeId, type }) => {
                     placeholder="Digite um ingrediente..."
                     value={ingredient}
                     onChange={(e) => handleIngredientChange(index, e.target.value)}
-                    className="p-2 border border-gray-300 rounded-md"
+                    className="p-2 border border-gray-300 rounded-md mb-1"
                   />
+
                 </FormControl>
 
                 {(index === ingredients.length - 1) && (index !== 0) && (
                   <div className="flex items-center mt-2">
+
                     <Button type="button" variant="ghost" onClick={handleRemoveIngredient} className="text-red-600 text-xs">Remover</Button>
                   </div>
                 )}
               </FormItem>
             ))}
+            <Button type="button" variant="ghost" onClick={handleAddIngredient} className="text-primary text-xs">Adicionar Ingrediente</Button>
+
 
           </div>
 
           <div className="flex-grow">
             <div className="flex items-center justify-between">
               <FormLabel className="mb-1 text-gray-700 font-medium">Modo de Preparo:</FormLabel>
-              <Button type="button" variant="ghost" onClick={handleAddCookingStep} className="mt-2 text-primary text-xs">Adicionar Etapa</Button>
 
             </div>
             {cookingSteps.map((step, index) => (
@@ -340,7 +342,7 @@ const CreateRecipesForm = ({ recipe, recipeId, type }) => {
                     placeholder="Digite um passo de preparo..."
                     value={step}
                     onChange={(e) => handleCookingStepChange(index, e.target.value)}
-                    className="p-2 border border-gray-300 rounded-md"
+                    className="p-2 border border-gray-300 rounded-md mb-1"
                   />
                 </FormControl>
                 {(index === cookingSteps.length - 1) && (index !== 0) && (
@@ -350,6 +352,8 @@ const CreateRecipesForm = ({ recipe, recipeId, type }) => {
                 )}
               </FormItem>
             ))}
+            <Button type="button" variant="ghost" onClick={handleAddCookingStep} className="text-primary text-xs">Adicionar Etapa</Button>
+
           </div>
         </div>
 
