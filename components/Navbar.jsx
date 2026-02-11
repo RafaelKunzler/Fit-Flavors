@@ -118,7 +118,7 @@ const Navbar = () => {
                 <Button
                   key={provider.name}
                   onClick={() => signIn(provider.id)}
-                  variant='secondary'
+                  variant='primary'
                 >
                   Entrar
                 </Button>
@@ -191,7 +191,7 @@ const Navbar = () => {
                 <Button
                   key={provider.name}
                   onClick={() => signIn(provider.id)}
-                  variant='secondary'
+                  variant='primary'
                 >
                   Entrar
                 </Button>
