@@ -1,4 +1,4 @@
-# 🍽️ Fit Flavors
+# 🍽️ [Fit Flavors](https://fit-flavors.vercel.app)
 
 A simple and friendly recipe creation and storage website where users can add, organize and view healthy recipes. Built so that anyone (including me 😉) can save tasty ideas and build a personal digital cookbook.
 
@@ -43,4 +43,8 @@ It’s the kind of project that shows I can handle both UI and data flow in a pr
 
 ## 🎞️ Preview
 
-Live demo: https://fit-flavors.vercel.app
+
+
+
+https://github.com/user-attachments/assets/91c5f062-bda7-4309-8c7d-54e683752cb5
+
